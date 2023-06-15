@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:sajesh_app/apiResponce/api_response.dart';
 import 'package:sajesh_app/screens/constantVariable/constantVariable.dart';
 import 'package:sajesh_app/screens/widgets/customWidgets.dart';
 import 'package:sajesh_app/screens/widgets/myColors.dart';
 import 'package:sajesh_app/screens/userAuthScreens/singUpScreen.dart';
-
+import 'dart:developer' as devtools show log;
 import 'forgetPasswordScreen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -54,6 +55,8 @@ class _LoginScreenState extends State<LoginScreen> {
     FocusScope.of(context).requestFocus(new FocusNode());
     final _accountUsername = emailController.value.text;
     final _accountPassword = passwordController.value.text;
+    // print(_accountUsername);
+    // print(_accountPassword);
 
     if (_accountUsername.isEmpty || _accountPassword.isEmpty) {
       if (_accountUsername.isEmpty) {
@@ -75,14 +78,16 @@ class _LoginScreenState extends State<LoginScreen> {
           // stop the modal progress HUD
           _isInAsyncCall = false;
         });
-        // Map toMap() {
-        //   var map = new Map();
-        //   map["username"] = _accountUsername;
-        //   map["password"] = _accountPassword;
-        //   return map;
-        // }
+        Map toMap() {
+          var map = new Map();
+          map["username"] = _accountUsername;
+          map["password"] = _accountPassword;
+          return map;
+        }
 
-        // futureAlbum = ReturnApisResponse().login(toMap());
+        futureAlbum = ReturnApisResponse().login(context, toMap());
+        print('login_B: ${futureAlbum}');
+        // devtools.log('login_B: ${futureAlbum}');
         // futureAlbum.catchError(
         //   (onError) {
         //     ConstantMethods.showSnackBar(context, "Please try again");
@@ -168,8 +173,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8.0),
                     ),
-                    labelText: 'User Name',
-                    hintText: 'Enter your User Name',
+                    labelText: ' Email Id',
+                    hintText: 'Enter your Email Id',
                     errorText: _emailErrorText),
                 onChanged: (text) => setState(() => _text),
               ),

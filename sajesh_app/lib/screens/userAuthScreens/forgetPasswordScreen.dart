@@ -1,5 +1,6 @@
 // ignore: file_names
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:sajesh_app/screens/constantVariable/constantVariable.dart';
 // import 'package:sajesh_app/screens/widgets/customWidgets.dart';
 import 'package:sajesh_app/screens/widgets/myColors.dart';
@@ -20,6 +21,25 @@ class _ForgetPasswordScreen extends State<ForgetPasswordScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: const [
+              // IconButton(
+              //   // Use the FaIcon Widget + FontAwesomeIcons class for the IconData
+              //   icon: const FaIcon(FontAwesomeIcons.arrowLeft),
+              //   onPressed: () {},
+              //   iconSize: 22,
+              // ),
+              Gap(5),
+              Text('Forget Password'),
+              CircleAvatar(
+                backgroundImage: AssetImage('assets/images/image.jpeg'),
+                maxRadius: 15,
+              ),
+            ],
+          ),
+        ),
         backgroundColor: MyColors.mainBackgroundColor,
         body: SingleChildScrollView(
             child: Column(children: <Widget>[

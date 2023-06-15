@@ -1,9 +1,12 @@
+// ignore: file_names
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+// import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:gap/gap.dart';
 import 'package:sajesh_app/screens/widgets/myColors.dart';
 
 class NotificationScreen extends StatefulWidget {
-  const NotificationScreen({super.key, required String title});
+  const NotificationScreen(
+      {super.key, required String title, required String languageCode});
 
   @override
   State<NotificationScreen> createState() => _NotificationScreenState();
@@ -17,15 +20,16 @@ class _NotificationScreenState extends State<NotificationScreen> {
       appBar: AppBar(
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            IconButton(
-              // Use the FaIcon Widget + FontAwesomeIcons class for the IconData
-              icon: const FaIcon(FontAwesomeIcons.arrowLeft),
-              onPressed: () {},
-              iconSize: 22,
-            ),
-            const Text('Notifications'),
-            const CircleAvatar(
+          children: const [
+            // IconButton(
+            //   // Use the FaIcon Widget + FontAwesomeIcons class for the IconData
+            //   icon: const FaIcon(FontAwesomeIcons.arrowLeft),
+            //   onPressed: () {},
+            //   iconSize: 22,
+            // ),
+            Gap(5),
+            Text('Notifications'),
+            CircleAvatar(
               backgroundImage: AssetImage('assets/images/image.jpeg'),
               maxRadius: 15,
             ),

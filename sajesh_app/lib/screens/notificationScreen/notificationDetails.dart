@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 // import 'package:flutter/src/widgets/framework.dart';
 // import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:gap/gap.dart';
+import 'package:sajesh_app/screens/homePage/buttom_bar.dart';
 import 'package:sajesh_app/screens/widgets/myColors.dart';
 // import 'package:sajesh_app/screens/widgets/myColors.dart';
 // import 'package:sajesh_app/screens/widgets/myColors.dart';
 
 class NotificationDetail extends StatefulWidget {
-  const NotificationDetail({super.key, required String title});
+  const NotificationDetail(
+      {super.key, required String title, required String languageCode});
 
   @override
   State<NotificationDetail> createState() => _NotificationDetailState();
@@ -21,15 +24,16 @@ class _NotificationDetailState extends State<NotificationDetail> {
           appBar: AppBar(
             title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                IconButton(
-                  // Use the FaIcon Widget + FontAwesomeIcons class for the IconData
-                  icon: const FaIcon(FontAwesomeIcons.arrowLeft),
-                  onPressed: () {},
-                  iconSize: 22,
-                ),
-                const Text('Notifications'),
-                const CircleAvatar(
+              children: const [
+                // IconButton(
+                //   // Use the FaIcon Widget + FontAwesomeIcons class for the IconData
+                //   icon: const FaIcon(FontAwesomeIcons.arrowLeft),
+                //   onPressed: () {},
+                //   iconSize: 22,
+                // ),
+                Gap(5),
+                Text('Notifications'),
+                CircleAvatar(
                   backgroundImage: AssetImage('assets/images/image.jpeg'),
                   maxRadius: 15,
                 ),
@@ -121,7 +125,7 @@ class _NotificationDetailState extends State<NotificationDetail> {
                       ),
                     ],
                   ),
-                )
+                ),
               ],
             ),
           )),
