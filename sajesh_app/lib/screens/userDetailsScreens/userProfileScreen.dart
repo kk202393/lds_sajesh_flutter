@@ -1,6 +1,7 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:sajesh_app/screens/widgets/myColors.dart';
 import 'package:sajesh_app/screens/constantVariable/constantVariable.dart';
 // import 'package:sajesh_app/screens/widgets/customWidgets.dart';
@@ -10,6 +11,7 @@ class UserPrifileScreen extends StatefulWidget {
   const UserPrifileScreen({
     super.key,
     required String title,
+    required String languageCode,
   });
   @override
   State<UserPrifileScreen> createState() => _UserPrifileScreen();
@@ -23,15 +25,16 @@ class _UserPrifileScreen extends State<UserPrifileScreen> {
             appBar: AppBar(
               title: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  IconButton(
-                    // Use the FaIcon Widget + FontAwesomeIcons class for the IconData
-                    icon: const FaIcon(FontAwesomeIcons.arrowLeft),
-                    onPressed: () {},
-                    iconSize: 22,
-                  ),
-                  const Text('Profile'),
-                  const CircleAvatar(
+                children: const [
+                  // IconButton(
+                  //   // Use the FaIcon Widget + FontAwesomeIcons class for the IconData
+                  //   icon: const FaIcon(FontAwesomeIcons.arrowLeft),
+                  //   onPressed: () {},
+                  //   iconSize: 22,
+                  // ),
+                  Gap(3),
+                  Text('Profile'),
+                  CircleAvatar(
                     backgroundImage: AssetImage('assets/images/image.jpeg'),
                     maxRadius: 15,
                   ),
@@ -301,7 +304,7 @@ class _UserPrifileScreen extends State<UserPrifileScreen> {
                                       // ignore: sized_box_for_whitespace
                                       child: Container(
                                         width: 250,
-                                        height: 100,
+                                        // height: 100,
                                         child: const Text(
                                           "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.",
                                           style: TextStyle(

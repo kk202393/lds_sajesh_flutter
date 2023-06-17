@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:sajesh_app/apiResponce/logIn_response.dart';
 import 'package:sajesh_app/screens/constantVariable/constantVariable.dart';
 import 'package:sajesh_app/screens/homePage/buttom_bar.dart';
 // import 'package:sajesh_app/screens/notificationScreen/notificationScreen.dart';
@@ -43,7 +44,7 @@ class ReturnApisResponse {
       // print(data);
       // print('login_B: ${data['msg']}');
       // devtools.log('login_B: ${jsonDecode(response.body)}');
-      // return UserLoginResponse.fromJson(jsonDecode(response.body.toString()));
+      // return UserLoginResponse.fromJson(jsonDecode(response.body));
       // return UserLoginResponse(
       //   msg: data["msg"],
       //   status: data["status"],
@@ -55,9 +56,8 @@ class ReturnApisResponse {
       //       email: "email",
       //       isStaff: true),
       // );
-      return null;
+      // return null;
     } catch (err) {
-      print("error");
       return 404;
     }
   }

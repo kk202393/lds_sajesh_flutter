@@ -55,8 +55,6 @@ class _LoginScreenState extends State<LoginScreen> {
     FocusScope.of(context).requestFocus(new FocusNode());
     final _accountUsername = emailController.value.text;
     final _accountPassword = passwordController.value.text;
-    // print(_accountUsername);
-    // print(_accountPassword);
 
     if (_accountUsername.isEmpty || _accountPassword.isEmpty) {
       if (_accountUsername.isEmpty) {
@@ -79,14 +77,14 @@ class _LoginScreenState extends State<LoginScreen> {
           _isInAsyncCall = false;
         });
         Map toMap() {
-          var map = new Map();
+          var map = {};
           map["username"] = _accountUsername;
           map["password"] = _accountPassword;
           return map;
         }
 
         futureAlbum = ReturnApisResponse().login(context, toMap());
-        print('login_B: ${futureAlbum}');
+        // print('login_B: ${futureAlbum}');
         // devtools.log('login_B: ${futureAlbum}');
         // futureAlbum.catchError(
         //   (onError) {
@@ -132,10 +130,9 @@ class _LoginScreenState extends State<LoginScreen> {
     if (text.isNotEmpty) {
       if (text.isEmpty) {
         return 'Too short';
+      } else if (!text.contains("@")) {
+        return 'Invalid Email';
       }
-      // if (!text.contains("@")) {
-      //   return 'Invalid Email';
-      // }
     }
     return null;
   }
@@ -146,6 +143,8 @@ class _LoginScreenState extends State<LoginScreen> {
     if (text.isNotEmpty) {
       if (text.length < 4) {
         return 'Too short password';
+      } else if (text.length > 16) {
+        return 'Too large password';
       }
     }
 
@@ -175,7 +174,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     labelText: ' Email Id',
                     hintText: 'Enter your Email Id',
-                    errorText: _emailErrorText),
+                    errorText: _emailErrorText,
+                    errorStyle: const TextStyle(color: MyColors.red)),
                 onChanged: (text) => setState(() => _text),
               ),
             ),
@@ -197,7 +197,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     labelText: 'Password',
                     hintText: 'Enter secure password',
-                    errorText: _passwordErrorText),
+                    errorText: _passwordErrorText,
+                    errorStyle: const TextStyle(color: MyColors.red)),
                 onChanged: (text) => setState(() => _text2),
               ),
             ),
@@ -265,11 +266,15 @@ class _LoginScreenState extends State<LoginScreen> {
                     minimumSize: const Size.fromHeight(50), // NEW
                   ),
                   onPressed: () {
-                    if (_emailErrorText == null && _passwordErrorText == null) {
-                      _submit(context);
-                    } else {
+                    if (_emailErrorText != null) {
                       ConstantMethods.showSnackBar(
-                          context, "Please Enter Credentials");
+                          context, "Please Enter Valid Email Id");
+                    } else if (_passwordErrorText != null) {
+                      ConstantMethods.showSnackBar(context,
+                          "Password must be greater than 4 and less than 12 digits");
+                    } else if (_emailErrorText == null &&
+                        _passwordErrorText == null) {
+                      _submit(context);
                     }
                   },
                   // onPressed: (_emailErrorText==null && _passwordErrorText==null) ?  _setLoggedIn
